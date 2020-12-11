@@ -62,9 +62,4 @@ public class Trailer extends Base {
         mTrailerDictionary = new Dictionary();
     }
 
-    public int writeTo(OutputStream stream) throws IOException {
-        byte[] bytes = render().getBytes(StandardCharsets.US_ASCII);
-        stream.write(bytes);
-        return bytes.length;
-    }
 }

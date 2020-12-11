@@ -33,25 +33,6 @@ public class PDFDocument extends Base {
         return mBody.getNewIndirectObject();
     }
 
-    public IndirectObject newRawObject(String content) {
-        IndirectObject iobj = mBody.getNewIndirectObject();
-        iobj.setContent(content);
-        return iobj;
-    }
-
-    public IndirectObject newDictionaryObject(String dictionaryContent) {
-        IndirectObject iobj = mBody.getNewIndirectObject();
-        iobj.setDictionaryContent(dictionaryContent);
-        return iobj;
-    }
-
-    public IndirectObject newStreamObject(String streamContent) {
-        IndirectObject iobj = mBody.getNewIndirectObject();
-        iobj.setDictionaryContent("  /Length " + Integer.toString(streamContent.length()) + "\n");
-        iobj.setStreamContent(streamContent);
-        return iobj;
-    }
-
     public void includeIndirectObject(IndirectObject iobj) {
         mBody.includeIndirectObject(iobj);
     }
@@ -76,26 +57,6 @@ public class PDFDocument extends Base {
         mTrailer.setObjectsCount(mBody.getObjectsCount());
         mTrailer.setCrossReferenceTableByteOffset(sb.length());
         return sb.toString() + mCRT.toPDFString() + mTrailer.toPDFString();
-    }
-
-    public void writeTo(OutputStream stream) throws IOException {
-        int offset = mHeader.writeTo(stream);
-
-        offset += mBody.writeTo(stream);
-
-        mCRT.setObjectNumberStart(mBody.getObjectNumberStart());
-        int x = 0;
-        while (x < mBody.getObjectsCount()) {
-            IndirectObject iobj = mBody.getObjectByNumberID(++x);
-            if (iobj != null) {
-                mCRT.addObjectXRefInfo(iobj.getByteOffset(), iobj.getGeneration(), iobj.getInUse());
-            }
-        }
-        mCRT.writeTo(stream);
-
-        mTrailer.setObjectsCount(mBody.getObjectsCount());
-        mTrailer.setCrossReferenceTableByteOffset(offset);
-        mTrailer.writeTo(stream);
     }
 
     @Override

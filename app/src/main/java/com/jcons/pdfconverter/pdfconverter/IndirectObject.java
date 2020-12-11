@@ -53,16 +53,9 @@ public class IndirectObject extends Base {
         return mInUse;
     }
 
-    public void addContent(String Value) {
-        mContent.addContent(Value);
-    }
 
     public void setContent(String Value) {
         mContent.setContent(Value);
-    }
-
-    public String getContent() {
-        return mContent.getContent();
     }
 
     public void addDictionaryContent(String Value) {
@@ -71,10 +64,6 @@ public class IndirectObject extends Base {
 
     public void setDictionaryContent(String Value) {
         mDictionaryContent.setContent(Value);
-    }
-
-    public String getDictionaryContent() {
-        return mDictionaryContent.getContent();
     }
 
     public void addStreamContent(String Value) {
