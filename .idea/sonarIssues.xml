@@ -8,6 +8,11 @@
             <set />
           </value>
         </entry>
+        <entry key="C:/Projetos/Pessoal/conexa/no_show/conexa-android/app/src/main/java/br/com/conexasaude/service/ImageService.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb">
           <value>
             <set />
@@ -39,6 +44,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/PDFDocument.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/PdfDocument.java">
           <value>
             <set />
           </value>
@@ -138,12 +148,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/ArrayContent.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Base.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Body.java">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Body.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/CrossReferenceTable.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/CrossReferenceTable.kt">
           <value>
             <set />
           </value>
@@ -158,6 +188,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/EnclosedContent.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Header.kt">
           <value>
             <set />
@@ -168,7 +203,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Indentifiers.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/IndirectIdentifier.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/IndirectIdentifier.kt">
           <value>
             <set />
           </value>
@@ -178,7 +223,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/IndirectObject.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/List.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/List.kt">
           <value>
             <set />
           </value>
@@ -188,7 +243,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/PDFDocument.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/PDFWriter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/PDFWriter.kt">
           <value>
             <set />
           </value>
@@ -198,12 +263,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Page.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Pages.java">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Pages.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/PaperSize.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/PaperSize.kt">
           <value>
             <set />
           </value>
@@ -223,7 +303,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Stream.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Trailer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/Trailer.kt">
           <value>
             <set />
           </value>
@@ -234,6 +324,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/XObjectImage.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/jcons/pdfconverter/pdfconverter/java/Dictionary.kt">
           <value>
             <set />
           </value>

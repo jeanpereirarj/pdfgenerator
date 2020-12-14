@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun gerarPDF(){
+
         val photo = (ContextCompat.getDrawable(this, R.drawable.dino) as BitmapDrawable?)!!.bitmap
 
         val mPDFWriter = PDFWriter()
