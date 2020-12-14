@@ -48,7 +48,7 @@ class Trailer : Base() {
 
     override fun clear() {
         mXRefByteOffset = 0
-        mTrailerDictionary = com.jcons.pdfconverter.pdfconverter.Dictionary()
+        mTrailerDictionary = Dictionary()
     }
 
     init {

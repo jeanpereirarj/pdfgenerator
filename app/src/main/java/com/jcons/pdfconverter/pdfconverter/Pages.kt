@@ -1,8 +1,5 @@
 package com.jcons.pdfconverter.pdfconverter
 
-import java.util.*
-import kotlin.collections.ArrayList
-
 class Pages(private val mDocument: PDFDocument, pageWidth: Int, pageHeight: Int) {
 
     private val mPageList: ArrayList<Page> = ArrayList()

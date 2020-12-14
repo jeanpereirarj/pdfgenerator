@@ -5,7 +5,6 @@ class PDFDocument : Base() {
 
     private val mHeader: Header = Header()
     private val mBody: Body = Body()
-    private val mCRT: CrossReferenceTable = CrossReferenceTable()
     private val mTrailer: Trailer = Trailer()
 
     fun newIndirectObject(): IndirectObject {
@@ -24,23 +23,14 @@ class PDFDocument : Base() {
         val sb = StringBuilder()
         sb.append(mHeader.toPDFString())
         sb.append(mBody.toPDFString())
-        mCRT.setObjectNumberStart(mBody.objectNumberStart)
-        var x = 0
-        while (x < mBody.objectsCount) {
-            val iobj = mBody.getObjectByNumberID(++x)
-            if (iobj != null) {
-                mCRT.addObjectXRefInfo(iobj.byteOffset, iobj.generation, iobj.inUse)
-            }
-        }
         mTrailer.setObjectsCount(mBody.objectsCount)
         mTrailer.setCrossReferenceTableByteOffset(sb.length)
-        return sb.toString() + mCRT.toPDFString() + mTrailer.toPDFString()
+        return sb.toString() + mTrailer.toPDFString()
     }
 
     override fun clear() {
         mHeader.clear()
         mBody.clear()
-        mCRT.clear()
         mTrailer.clear()
     }
 
