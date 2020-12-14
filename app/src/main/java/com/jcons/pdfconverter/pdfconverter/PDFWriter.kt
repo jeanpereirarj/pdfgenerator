@@ -39,7 +39,7 @@ class PDFWriter {
         bitmap: Bitmap?,
         transformation: String = DEGREES_0_ROTATION
     ) {
-        val xImage = XObjectImage(mDocument, bitmap)
+        val xImage = XObjectImage(mDocument!!, bitmap!!)
         mCurrentPage!!.addImage(
             fromLeft,
             fromBottom,

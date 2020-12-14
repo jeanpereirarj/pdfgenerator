@@ -1,16 +1,6 @@
 package com.jcons.pdfconverter.pdfconverter
 
-import com.jcons.pdfconverter.pdfconverter.PDFDocument.newIndirectObject
-import com.jcons.pdfconverter.pdfconverter.PDFDocument.includeIndirectObject
-import com.jcons.pdfconverter.pdfconverter.IndirectObject.addDictionaryContent
-import com.jcons.pdfconverter.pdfconverter.IndirectObject.addStreamContent
-import com.jcons.pdfconverter.pdfconverter.IndirectObject.indirectReference
-import com.jcons.pdfconverter.pdfconverter.PDFDocument
 import android.graphics.Bitmap
-import com.jcons.pdfconverter.pdfconverter.IndirectObject
-import com.jcons.pdfconverter.pdfconverter.XObjectImage
-import com.jcons.pdfconverter.pdfconverter.ASCII85Encoder
-import com.jcons.pdfconverter.pdfconverter.Indentifiers
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.zip.Deflater
@@ -131,7 +121,7 @@ class XObjectImage(private val mDocument: PDFDocument, bitmap: Bitmap) {
 
     init {
         mProcessedImage = processImage(configureBitmap(bitmap))
-        id = Indentifiers.generateId(mProcessedImage)
+        id = Indentifiers.generateId(mProcessedImage!!)
         name = "/img" + ++mImageCount
     }
 }

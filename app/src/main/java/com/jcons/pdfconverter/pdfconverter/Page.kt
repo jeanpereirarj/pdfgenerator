@@ -60,14 +60,14 @@ class Page(document:PDFDocument) {
     private fun ensureXObjectImage(xObject:XObjectImage):String {
         for (x in mXObjects)
         {
-            if (x.getId().equals(xObject.getId()))
+            if (x.id.equals(xObject.id))
             {
-                return x.getName()
+                return x.name
             }
         }
         mXObjects.add(xObject)
         xObject.appendToDocument()
-        return xObject.getName()
+        return xObject.name
     }
     fun addImage(fromLeft:Int, fromBottom:Int, width:Int, height:Int, xImage:XObjectImage, transformation:String) {
         val name = ensureXObjectImage(xImage)
