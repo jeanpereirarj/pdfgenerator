@@ -5,7 +5,7 @@ class Header : Base() {
     private var mVersion: String? = null
     private var mRenderedHeader: String? = null
     fun setVersion(major: Int, minor: Int) {
-        mVersion = Integer.toString(major) + "." + Integer.toString(minor)
+        mVersion = "$major.$minor"
         render()
     }
 
