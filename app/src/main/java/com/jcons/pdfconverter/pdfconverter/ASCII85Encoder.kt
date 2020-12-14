@@ -103,7 +103,7 @@ class ASCII85Encoder : FilterOutputStream {
 
         // end the last line properly
         if (length != 0) {
-            out.write(eol, 0, eol.size)
+            out.write(eol, 0, eol!!.size)
         }
 
         // close the underlying stream
@@ -178,7 +178,7 @@ class ASCII85Encoder : FilterOutputStream {
             }
             out.write(b)
             if (++length >= lineLength) {
-                out.write(eol, 0, eol.size)
+                out.write(eol, 0, eol!!.size)
                 length = 0
             }
         } else {
@@ -194,12 +194,12 @@ class ASCII85Encoder : FilterOutputStream {
     /**
      * Start of line marker (indentation).
      */
-    private var sol: ByteArray?
+    private var sol: ByteArray? = null
 
     /**
      * End Of Line marker.
      */
-    private var eol: ByteArray
+    private var eol: ByteArray? = null
 
     /**
      * Coefficients of the 32-bits quantum in base 85.
