@@ -4,12 +4,12 @@ import android.graphics.Bitmap
 
 
 class PDFWriter {
-    private var mDocument: PDFDocument? = null
+    private var mDocument: PDFDocument = PDFDocument()
     private var mCatalog: IndirectObject? = null
     private var mPages: Pages? = null
     private var mCurrentPage: Page? = null
+
     private fun newDocument(pageWidth: Int, pageHeight: Int) {
-        mDocument = PDFDocument()
         mCatalog = mDocument!!.newIndirectObject()
         mDocument!!.includeIndirectObject(mCatalog)
         mPages = Pages(mDocument!!, pageWidth, pageHeight)
@@ -21,8 +21,8 @@ class PDFWriter {
     private fun renderCatalog() {
         mCatalog!!.setDictionaryContent(
             """  /Type /Catalog
-  /Pages ${mPages?.indirectObject?.indirectReference}
-"""
+            /Pages ${mPages?.indirectObject?.indirectReference}
+            """
         )
     }
 
@@ -36,10 +36,10 @@ class PDFWriter {
     fun addImage(
         fromLeft: Int,
         fromBottom: Int,
-        bitmap: Bitmap?,
+        bitmap: Bitmap,
         transformation: String = DEGREES_0_ROTATION
     ) {
-        val xImage = XObjectImage(mDocument!!, bitmap!!)
+        val xImage = XObjectImage(mDocument, bitmap)
         mCurrentPage!!.addImage(
             fromLeft,
             fromBottom,
