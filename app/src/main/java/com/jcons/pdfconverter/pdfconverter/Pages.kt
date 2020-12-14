@@ -7,7 +7,6 @@ class Pages(private val mDocument: PDFDocument, pageWidth: Int, pageHeight: Int)
 
     private val mPageList: ArrayList<Page> = ArrayList()
     val indirectObject: IndirectObject = mDocument.newIndirectObject()
-    private val mMediaBox: ArrayContent = ArrayContent()
     private val mKids: ArrayContent = ArrayContent()
 
     fun newPage(): Page {
@@ -21,7 +20,6 @@ class Pages(private val mDocument: PDFDocument, pageWidth: Int, pageHeight: Int)
     fun render() {
         indirectObject.setDictionaryContent(
             """  /Type /Pages
-  /MediaBox ${mMediaBox.toPDFString()}
   /Count ${Integer.toString(mPageList.size)}
   /Kids ${mKids.toPDFString()}
 """
@@ -38,6 +36,5 @@ class Pages(private val mDocument: PDFDocument, pageWidth: Int, pageHeight: Int)
             pageWidth.toString(),
             pageHeight.toString()
         )
-        mMediaBox.addItemsFromStringArray(content)
     }
 }
