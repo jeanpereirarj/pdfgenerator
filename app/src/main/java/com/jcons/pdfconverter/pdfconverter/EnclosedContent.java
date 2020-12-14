@@ -4,6 +4,8 @@ package com.jcons.pdfconverter.pdfconverter;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import kotlin.text.Charsets;
+
 public class EnclosedContent extends Base {
 
     private final String mBegin;
@@ -20,17 +22,17 @@ public class EnclosedContent extends Base {
         return mContent.length() > 0;
     }
 
-    public void setContent(String Value) {
+    public void setContent(String value) {
         clear();
-        mContent.append(Value);
+        mContent.append(value);
     }
 
     public String getContent() {
         return mContent.toString();
     }
 
-    public void addContent(String Value) {
-        mContent.append(Value);
+    public void addContent(String value) {
+        mContent.append(value);
     }
 
     public void addNewLine() {
@@ -52,7 +54,7 @@ public class EnclosedContent extends Base {
     }
 
     public int writeTo(OutputStream stream) throws IOException {
-        byte[] bytes = toPDFString().getBytes(StandardCharsets.US_ASCII);
+        byte[] bytes = toPDFString().getBytes(Charsets.US_ASCII);
         stream.write(bytes);
         return bytes.length;
     }

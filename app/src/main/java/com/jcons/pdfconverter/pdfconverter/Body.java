@@ -20,12 +20,12 @@ public class Body extends List {
         return mObjectNumberStart;
     }
 
-    public void setObjectNumberStart(int Value) {
-        mObjectNumberStart = Value;
+    public void setObjectNumberStart(int value) {
+        mObjectNumberStart = value;
     }
 
-    public void setByteOffsetStart(int Value) {
-        mByteOffsetStart = Value;
+    public void setByteOffsetStart(int value) {
+        mByteOffsetStart = value;
     }
 
     public int getObjectsCount() {
@@ -40,17 +40,17 @@ public class Body extends List {
         return getNewIndirectObject(getNextAvailableObjectNumber(), 0, true);
     }
 
-    public IndirectObject getNewIndirectObject(int Number, int Generation, boolean InUse) {
+    public IndirectObject getNewIndirectObject(int number, int generation, boolean inUse) {
         IndirectObject iobj = new IndirectObject();
-        iobj.setNumberID(Number);
-        iobj.setGeneration(Generation);
-        iobj.setInUse(InUse);
+        iobj.setNumberID(number);
+        iobj.setGeneration(generation);
+        iobj.setInUse(inUse);
         return iobj;
     }
 
-    public IndirectObject getObjectByNumberID(int Number) {
+    public IndirectObject getObjectByNumberID(int number) {
         for (IndirectObject iobj : mObjectsList)
-            if (iobj.getNumberID() == Number)
+            if (iobj.getNumberID() == number)
                 return iobj;
 
         return null;
@@ -65,10 +65,13 @@ public class Body extends List {
         for (int x = 1; x <= mObjectsList.size(); x++) {
             IndirectObject iobj = getObjectByNumberID(x);
             String s = "";
-            if (iobj != null)
+
+            if (iobj != null){
                 s = iobj.toPDFString() + "\n";
+                iobj.setByteOffset(offset);
+            }
+
             mList.add(s);
-            iobj.setByteOffset(offset);
             offset += s.length();
         }
         return renderList();

@@ -73,7 +73,7 @@ public class ASCII85Encoder extends FilterOutputStream {
      *
      * @throws IOException if the underlying stream throws one
      */
-    public void close() throws IOException {
+    @Override public void close() throws IOException {
 
         if (c1 >= 0) {
             c4 += c5 / 85;
@@ -115,7 +115,7 @@ public class ASCII85Encoder extends FilterOutputStream {
      *
      * @param b byte to write (only the 8 low order bits are used)
      */
-    public void write(int b) throws IOException {
+    @Override public void write(int b) throws IOException {
 
         b = b & 0xff;
 

@@ -1,9 +1,6 @@
 package com.jcons.pdfconverter.pdfconverter;
 
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 public class Trailer extends Base {
 
     private int mXRefByteOffset;
@@ -15,16 +12,16 @@ public class Trailer extends Base {
         clear();
     }
 
-    public void setId(String Value) {
-        mId = Value;
+    public void setId(String value) {
+        mId = value;
     }
 
-    public void setCrossReferenceTableByteOffset(int Value) {
-        mXRefByteOffset = Value;
+    public void setCrossReferenceTableByteOffset(int value) {
+        mXRefByteOffset = value;
     }
 
-    public void setObjectsCount(int Value) {
-        mObjectsCount = Value;
+    public void setObjectsCount(int value) {
+        mObjectsCount = value;
     }
 
     private void renderDictionary() {

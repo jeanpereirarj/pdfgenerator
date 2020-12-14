@@ -10,20 +10,20 @@ public class CrossReferenceTable extends List {
         clear();
     }
 
-    public void setObjectNumberStart(int Value) {
-        mObjectNumberStart = Value;
+    public void setObjectNumberStart(int value) {
+        mObjectNumberStart = value;
     }
 
     private String getObjectsXRefInfo() {
         return renderList();
     }
 
-    public void addObjectXRefInfo(int ByteOffset, int Generation, boolean InUse) {
+    public void addObjectXRefInfo(int byteOffset, int generation, boolean inUse) {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%010d", ByteOffset));
+        sb.append(String.format("%010d", byteOffset));
         sb.append(" ");
-        sb.append(String.format("%05d", Generation));
-        if (InUse) {
+        sb.append(String.format("%05d", generation));
+        if (inUse) {
             sb.append(" n ");
         } else {
             sb.append(" f ");

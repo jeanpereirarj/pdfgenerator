@@ -4,6 +4,8 @@ package com.jcons.pdfconverter.pdfconverter;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import kotlin.text.Charsets;
+
 public class IndirectIdentifier extends Base {
 
     private int mNumber;
@@ -13,16 +15,16 @@ public class IndirectIdentifier extends Base {
         clear();
     }
 
-    public void setNumber(int Number) {
-        this.mNumber = Number;
+    public void setNumber(int number) {
+        this.mNumber = number;
     }
 
     public int getNumber() {
         return mNumber;
     }
 
-    public void setGeneration(int Generation) {
-        this.mGeneration = Generation;
+    public void setGeneration(int generation) {
+        this.mGeneration = generation;
     }
 
     public int getGeneration() {
@@ -41,7 +43,7 @@ public class IndirectIdentifier extends Base {
     }
 
     public int writeTo(OutputStream stream) throws IOException {
-        byte[] bytes = toPDFString().getBytes(StandardCharsets.US_ASCII);
+        byte[] bytes = toPDFString().getBytes(Charsets.US_ASCII);
         stream.write(bytes);
         return bytes.length;
     }

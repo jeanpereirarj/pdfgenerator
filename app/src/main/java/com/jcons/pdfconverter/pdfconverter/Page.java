@@ -16,7 +16,6 @@ public class Page {
         mIndirectObject = mDocument.newIndirectObject();
         mPageFonts = new ArrayList<IndirectObject>();
         mXObjects = new ArrayList<XObjectImage>();
-        setFont(StandardFonts.SUBTYPE, StandardFonts.TIMES_ROMAN, StandardFonts.WIN_ANSI_ENCODING);
         mPageContents = mDocument.newIndirectObject();
         mDocument.includeIndirectObject(mPageContents);
     }
@@ -26,28 +25,28 @@ public class Page {
     }
 
     private String getFontReferences() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (!mPageFonts.isEmpty()) {
-            result = "    /Font <<\n";
+            result.append("    /Font <<\n");
             int x = 0;
             for (IndirectObject lFont : mPageFonts) {
-                result += "      /F" + Integer.toString(++x) + " " + lFont.getIndirectReference() + "\n";
+                result.append("      /F" + Integer.toString(++x) + " " + lFont.getIndirectReference() + "\n");
             }
-            result += "    >>\n";
+            result.append("    >>\n");
         }
-        return result;
+        return result.toString();
     }
 
     private String getXObjectReferences() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (!mXObjects.isEmpty()) {
-            result = "    /XObject <<\n";
+            result.append("    /XObject <<\n");
             for (XObjectImage xObj : mXObjects) {
-                result += "      " + xObj.asXObjectReference() + "\n";
+                result.append("      " + xObj.asXObjectReference() + "\n");
             }
-            result += "    >>\n";
+            result.append("    >>\n");
         }
-        return result;
+        return result.toString();
     }
 
     public void render(String pagesIndirectReference) {
@@ -56,13 +55,6 @@ public class Page {
                         "  /Resources <<\n" + getFontReferences() + getXObjectReferences() + "  >>\n" +
                         "  /Contents " + mPageContents.getIndirectReference() + "\n"
         );
-    }
-
-    public void setFont(String subType, String baseFont, String encoding) {
-        IndirectObject lFont = mDocument.newIndirectObject();
-        mDocument.includeIndirectObject(lFont);
-        lFont.setDictionaryContent("  /Type /Font\n  /Subtype /" + subType + "\n  /BaseFont /" + baseFont + "\n  /Encoding /" + encoding + "\n");
-        mPageFonts.add(lFont);
     }
 
     private void addContent(String content) {
@@ -88,11 +80,13 @@ public class Page {
         final String translate = "1 0 0 1 " + fromLeft + " " + fromBottom;
         final String scale = "" + width + " 0 0 " + height + " 0 0";
         final String rotate = transformation + " 0 0";
+        String breakline =  " cm\n";
+
         addContent(
                 "q\n" +
-                        translate + " cm\n" +
-                        rotate + " cm\n" +
-                        scale + " cm\n" +
+                        translate + breakline +
+                        rotate + breakline +
+                        scale + breakline +
                         name + " Do\n" +
                         "Q\n"
         );

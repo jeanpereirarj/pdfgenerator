@@ -1,0 +1,13 @@
+
+Z
+java:S4719*"=Replace Charset.forName() call with StandardCharsets.UTF_16LE(ˆì² 8²òîå.
+_
+java:S4719"=Replace Charset.forName() call with StandardCharsets.US_ASCII(ª‚¦Áÿÿÿÿÿ8²òîå.
+a
+java:S4719"?Replace Charset.forName() call with StandardCharsets.ISO_8859_1(²ØÊşÿÿÿÿ8²òîå.
+Z
+java:S4719%"=Replace Charset.forName() call with StandardCharsets.UTF_16BE(ºÛ •8²òîå.
+X
+java:S4719 ";Replace Charset.forName() call with StandardCharsets.UTF_16(àÓ±˜8²òîå.
+\
+java:S4719":Replace Charset.forName() call with StandardCharsets.UTF_8(ÄõÂ´ıÿÿÿÿ8²òîå.

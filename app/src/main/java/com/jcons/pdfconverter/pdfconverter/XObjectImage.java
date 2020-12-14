@@ -13,12 +13,12 @@ public class XObjectImage {
     public static final int BITSPERCOMPONENT_8 = 8;
     public static final String DEVICE_RGB = "/DeviceRGB";
 
-    public static boolean INTERPOLATION = false;
-    public static int BITSPERCOMPONENT = BITSPERCOMPONENT_8;
-    public static String COLORSPACE = DEVICE_RGB;
+    public static final boolean INTERPOLATION = false;
+    public static final int BITSPER_COMPONENT = BITSPERCOMPONENT_8;
+    public static final String COLOR_SPACE = DEVICE_RGB;
 
-    public static int COMPRESSION_LEVEL = Deflater.NO_COMPRESSION;
-    public static String ENCODING = "ISO-8859-1";
+    public static final int COMPRESSION_LEVEL = Deflater.NO_COMPRESSION;
+    public static final String ENCODING = "ISO-8859-1";
 
     static int mImageCount = 0;
 
@@ -47,7 +47,7 @@ public class XObjectImage {
                         " /Filter [/ASCII85Decode /FlateDecode]\n" +
                         " /Width " + mWidth + "\n" +
                         " /Height " + mHeight + "\n" +
-                        " /BitsPerComponent " + Integer.toString(BITSPERCOMPONENT) + "\n" +
+                        " /BitsPerComponent " + Integer.toString(BITSPER_COMPONENT) + "\n" +
                         " /Interpolate " + Boolean.toString(INTERPOLATION) + "\n" +
                         " /ColorSpace " + DEVICE_RGB + "\n" +
                         " /Length " + mProcessedImage.length() + "\n"

@@ -17,16 +17,16 @@ public class IndirectObject extends Base {
         clear();
     }
 
-    public void setNumberID(int Value) {
-        mID.setNumber(Value);
+    public void setNumberID(int value) {
+        mID.setNumber(value);
     }
 
     public int getNumberID() {
         return mID.getNumber();
     }
 
-    public void setGeneration(int Value) {
-        mID.setGeneration(Value);
+    public void setGeneration(int value) {
+        mID.setGeneration(value);
     }
 
     public int getGeneration() {
@@ -37,16 +37,16 @@ public class IndirectObject extends Base {
         return mID.toPDFString() + " R";
     }
 
-    public void setByteOffset(int Value) {
-        mByteOffset = Value;
+    public void setByteOffset(int value) {
+        mByteOffset = value;
     }
 
     public int getByteOffset() {
         return mByteOffset;
     }
 
-    public void setInUse(boolean Value) {
-        mInUse = Value;
+    public void setInUse(boolean value) {
+        mInUse = value;
     }
 
     public boolean getInUse() {
@@ -54,24 +54,24 @@ public class IndirectObject extends Base {
     }
 
 
-    public void setContent(String Value) {
-        mContent.setContent(Value);
+    public void setContent(String value) {
+        mContent.setContent(value);
     }
 
-    public void addDictionaryContent(String Value) {
-        mDictionaryContent.addContent(Value);
+    public void addDictionaryContent(String value) {
+        mDictionaryContent.addContent(value);
     }
 
-    public void setDictionaryContent(String Value) {
-        mDictionaryContent.setContent(Value);
+    public void setDictionaryContent(String value) {
+        mDictionaryContent.setContent(value);
     }
 
-    public void addStreamContent(String Value) {
-        mStreamContent.addContent(Value);
+    public void addStreamContent(String value) {
+        mStreamContent.addContent(value);
     }
 
-    public void setStreamContent(String Value) {
-        mStreamContent.setContent(Value);
+    public void setStreamContent(String value) {
+        mStreamContent.setContent(value);
     }
 
     public String getStreamContent() {

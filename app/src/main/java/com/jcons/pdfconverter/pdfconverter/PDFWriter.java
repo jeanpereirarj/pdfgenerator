@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 public class PDFWriter{
 
+    public static final String DEGREES_0_ROTATION = "1 0 0 1";
+
     private PDFDocument mDocument;
     private IndirectObject mCatalog;
     private Pages mPages;
@@ -34,7 +36,7 @@ public class PDFWriter{
     }
 
     public void addImage(int fromLeft, int fromBottom, Bitmap bitmap) {
-        addImage(fromLeft, fromBottom, bitmap, Transformation.DEGREES_0_ROTATION);
+        addImage(fromLeft, fromBottom, bitmap, DEGREES_0_ROTATION);
     }
 
     public void addImage(int fromLeft, int fromBottom, Bitmap bitmap, String transformation) {

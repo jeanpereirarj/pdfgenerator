@@ -1,17 +1,6 @@
 package com.jcons.pdfconverter.pdfconverter;
 
 
-import com.jcons.pdfconverter.pdfconverter.Base;
-import com.jcons.pdfconverter.pdfconverter.Body;
-import com.jcons.pdfconverter.pdfconverter.CrossReferenceTable;
-import com.jcons.pdfconverter.pdfconverter.Header;
-import com.jcons.pdfconverter.pdfconverter.Indentifiers;
-import com.jcons.pdfconverter.pdfconverter.IndirectObject;
-import com.jcons.pdfconverter.pdfconverter.Trailer;
-
-import java.io.IOException;
-import java.io.OutputStream;
-
 public class PDFDocument extends Base {
 
     private Header mHeader;

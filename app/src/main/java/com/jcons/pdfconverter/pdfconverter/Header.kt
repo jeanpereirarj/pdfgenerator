@@ -4,8 +4,8 @@ package com.jcons.pdfconverter.pdfconverter
 class Header : Base() {
     private var mVersion: String? = null
     private var mRenderedHeader: String? = null
-    fun setVersion(Major: Int, Minor: Int) {
-        mVersion = Integer.toString(Major) + "." + Integer.toString(Minor)
+    fun setVersion(major: Int, minor: Int) {
+        mVersion = Integer.toString(major) + "." + Integer.toString(minor)
         render()
     }
 

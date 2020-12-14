@@ -16,7 +16,7 @@ public class Pages {
         mIndirectObject = mDocument.newIndirectObject();
         mPageList = new ArrayList<Page>();
         mMediaBox = new Array();
-        String content[] = {"0", "0", Integer.toString(pageWidth), Integer.toString(pageHeight)};
+        String[] content = {"0", "0", Integer.toString(pageWidth), Integer.toString(pageHeight)};
         mMediaBox.addItemsFromStringArray(content);
         mKids = new Array();
     }
