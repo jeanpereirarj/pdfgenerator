@@ -4,7 +4,7 @@ import java.io.IOException
 import java.io.OutputStream
 
 
-class IndirectIdentifier : Base() {
+class IndirectIdentifier : Base {
     var number = 0
     var generation = 0
 

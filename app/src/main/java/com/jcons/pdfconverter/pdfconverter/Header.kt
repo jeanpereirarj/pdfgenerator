@@ -1,10 +1,11 @@
 package com.jcons.pdfconverter.pdfconverter
 
 
-class Header : Base() {
+class Header : Base {
     private var mVersion: String? = null
     private var mRenderedHeader: String? = null
-    fun setVersion(major: Int, minor: Int) {
+
+    private fun setVersion(major: Int, minor: Int) {
         mVersion = "$major.$minor"
         render()
     }

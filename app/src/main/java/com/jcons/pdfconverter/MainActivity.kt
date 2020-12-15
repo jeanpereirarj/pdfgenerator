@@ -36,17 +36,24 @@ class MainActivity : AppCompatActivity() {
 
     fun gerarPDF(){
 
+        val downloads =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+
         val photo = (ContextCompat.getDrawable(this, R.drawable.dino) as BitmapDrawable?)!!.bitmap
 
+        var newFile = File(downloads, "teste.bmp")
+        newFile.createNewFile()
+        val bmpfile = FileOutputStream(newFile)
+
+        AndroidBmpUtil().saveBitmap(photo, bmpfile)
         val mPDFWriter = PDFWriter()
         mPDFWriter.addImage(0, 0, photo)
         mPDFWriter.newPage()
         mPDFWriter.addImage(0, 0, photo)
 
         val pdfContent = mPDFWriter.asString()
-        val downloads =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val newFile = File(downloads, "teste.pdf")
+
+        newFile = File(downloads, "teste.pdf")
 
         try {
             newFile.createNewFile()

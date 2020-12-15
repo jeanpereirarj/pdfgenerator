@@ -4,7 +4,7 @@ import java.io.IOException
 import java.io.OutputStream
 
 
-class IndirectObject : Base() {
+class IndirectObject : Base {
     private var mContent: EnclosedContent? = null
     private var mDictionaryContent: Dictionary? = null
     private var mStreamContent: Stream? = null

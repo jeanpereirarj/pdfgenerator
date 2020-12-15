@@ -4,9 +4,10 @@ import java.io.IOException
 import java.io.OutputStream
 
 
-open class EnclosedContent(private val mBegin: String, private val mEnd: String) :
-    Base() {
-    protected var mContent: StringBuilder? = null
+open class EnclosedContent(private val mBegin: String, private val mEnd: String) : Base {
+
+    var mContent: StringBuilder? = null
+
     fun hasContent(): Boolean {
         return mContent!!.length > 0
     }

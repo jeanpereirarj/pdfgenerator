@@ -1,7 +1,7 @@
 package com.jcons.pdfconverter.pdfconverter
 
 
-class Trailer : Base() {
+class Trailer : Base {
     private var mXRefByteOffset = 0
     private var mObjectsCount = 0
     private var mId: String? = null

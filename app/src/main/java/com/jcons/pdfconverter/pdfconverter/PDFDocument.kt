@@ -1,7 +1,7 @@
 package com.jcons.pdfconverter.pdfconverter
 
 
-class PDFDocument : Base() {
+class PDFDocument : Base {
 
     private val mHeader: Header = Header()
     private val mBody: Body = Body()

@@ -7,9 +7,4 @@ class ArrayContent : EnclosedContent("[ ", "]") {
         addSpace()
     }
 
-    fun addItemsFromStringArray(content: Array<String?>) {
-        for (s in content) {
-            addItem(s)
-        }
-    }
 }
