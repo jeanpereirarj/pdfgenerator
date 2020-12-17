@@ -65,8 +65,6 @@ class MainActivity : AppCompatActivity() {
         //Cria o PDF
         val mPDFWriter = PDFWriter()
         mPDFWriter.addImage(0, 0, photo)
-        mPDFWriter.newPage()
-        mPDFWriter.addImage(0, 0, photo)
 
         val pdfContent = mPDFWriter.asString()
 
