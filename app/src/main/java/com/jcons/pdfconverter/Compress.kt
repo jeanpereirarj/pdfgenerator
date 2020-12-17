@@ -57,11 +57,11 @@ private const val DEFAULT_WIDTH: Int = 612
 private const val DEFAULT_HEIGTH: Int = 816
 
 
-fun compressorFile(imageFile: File, quality: Int){
-    decodeSampledBitmapFromFile(imageFile, DEFAULT_WIDTH, DEFAULT_HEIGTH).run {
-        overWrite(imageFile, this, imageFile.compressFormat(), quality)
-    }
-}
+//fun compressorFile(imageFile: File, quality: Int){
+//    decodeSampledBitmapFromFile(imageFile, DEFAULT_WIDTH, DEFAULT_HEIGTH).run {
+//        overWrite(imageFile, this, imageFile.compressFormat(), quality)
+//    }
+//}
 
 private fun decodeSampledBitmapFromFile(imageFile: File, reqWidth: Int, reqHeight: Int): Bitmap {
     return BitmapFactory.Options().run {
@@ -93,28 +93,28 @@ private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int,
     return inSampleSize
 }
 
-fun overWrite(imageFile: File, bitmap: Bitmap, format: Bitmap.CompressFormat = imageFile.compressFormat(), quality: Int = 100): File {
-    val result = if (format == imageFile.compressFormat()) {
-        imageFile
-    } else {
-        File("${imageFile.absolutePath.substringBeforeLast(".")}.${format.extension()}")
-    }
-    imageFile.delete()
-    saveBitmap(bitmap, result, format, quality)
-    return result
-}
-
-private fun determineImageRotation(imageFile: File, bitmap: Bitmap): Bitmap {
-    val exif = ExifInterface(imageFile.absolutePath)
-    val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 0)
-    val matrix = Matrix()
-    when (orientation) {
-        6 -> matrix.postRotate(90f)
-        3 -> matrix.postRotate(180f)
-        8 -> matrix.postRotate(270f)
-    }
-    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-}
+//fun overWrite(imageFile: File, bitmap: Bitmap, format: Bitmap.CompressFormat = imageFile.compressFormat(), quality: Int = 100): File {
+//    val result = if (format == imageFile.compressFormat()) {
+//        imageFile
+//    } else {
+//        File("${imageFile.absolutePath.substringBeforeLast(".")}.${format.extension()}")
+//    }
+//    imageFile.delete()
+//    saveBitmap(bitmap, result, format, quality)
+//    return result
+//}
+//
+//private fun determineImageRotation(imageFile: File, bitmap: Bitmap): Bitmap {
+//    val exif = ExifInterface(imageFile.absolutePath)
+//    val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 0)
+//    val matrix = Matrix()
+//    when (orientation) {
+//        6 -> matrix.postRotate(90f)
+//        3 -> matrix.postRotate(180f)
+//        8 -> matrix.postRotate(270f)
+//    }
+//    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+//}
 
 fun File.compressFormat() = when (extension.toLowerCase()) {
     "png" -> Bitmap.CompressFormat.PNG
@@ -128,16 +128,16 @@ fun Bitmap.CompressFormat.extension() = when (this) {
     else -> "jpg"
 }
 
-fun saveBitmap(bitmap: Bitmap, destination: File, format: Bitmap.CompressFormat = destination.compressFormat(), quality: Int = 100) {
-    destination.parentFile?.mkdirs()
-    var fileOutputStream: FileOutputStream? = null
-    try {
-        fileOutputStream = FileOutputStream(destination.absolutePath)
-        bitmap.compress(format, quality, fileOutputStream)
-    } finally {
-        fileOutputStream?.run {
-            flush()
-            close()
-        }
-    }
-}
+//fun saveBitmap(bitmap: Bitmap, destination: File, format: Bitmap.CompressFormat = destination.compressFormat(), quality: Int = 100) {
+//    destination.parentFile?.mkdirs()
+//    var fileOutputStream: FileOutputStream? = null
+//    try {
+//        fileOutputStream = FileOutputStream(destination.absolutePath)
+//        bitmap.compress(format, quality, fileOutputStream)
+//    } finally {
+//        fileOutputStream?.run {
+//            flush()
+//            close()
+//        }
+//    }
+//}

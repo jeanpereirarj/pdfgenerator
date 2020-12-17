@@ -44,13 +44,13 @@ class AndroidBmpUtil {
         }
     }
 
-    fun saveBitmap(
-        bitmap: Bitmap,
-        outputStream: OutputStream?
-    ) {
-        this.outputStream = outputStream
-        save(bitmap)
-    }
+//    fun saveBitmap(
+//        bitmap: Bitmap,
+//        outputStream: OutputStream?
+//    ) {
+//        this.outputStream = outputStream
+//        save(bitmap)
+//    }
 
     private fun save(
         bitmap: Bitmap

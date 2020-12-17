@@ -113,7 +113,7 @@ class XObjectImage(private val mDocument: PDFDocument, bitmap: Bitmap) {
         const val DEVICE_RGB = "/DeviceRGB"
         const val INTERPOLATION = false
         const val BITSPER_COMPONENT = BITSPERCOMPONENT_8
-        const val COLOR_SPACE = DEVICE_RGB
+//        const val COLOR_SPACE = DEVICE_RGB
         const val COMPRESSION_LEVEL = Deflater.NO_COMPRESSION
         var mImageCount = 0
     }
