@@ -27,10 +27,6 @@ class IndirectObject : Base {
     val indirectReference: String
         get() = mID!!.toPDFString() + " R"
 
-    fun setContent(value: String?) {
-        mContent?.content = value
-    }
-
     fun addDictionaryContent(value: String?) {
         mDictionaryContent!!.addContent(value)
     }

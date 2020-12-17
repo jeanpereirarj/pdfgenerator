@@ -63,20 +63,6 @@ class Body : List() {
         return render()
     }
 
-    @Throws(IOException::class)
-    fun writeTo(stream: OutputStream): Int {
-        var offset = mByteOffsetStart
-        for (x in 1..mObjectsList!!.size) {
-            val iobj = getObjectByNumberID(x)
-            if (iobj != null) {
-                iobj.byteOffset = offset
-                offset += iobj.writeTo(stream) + 1
-                stream.write('\n'.toInt())
-            }
-        }
-        return offset - mByteOffsetStart
-    }
-
     override fun clear() {
         super.clear()
         mByteOffsetStart = 0

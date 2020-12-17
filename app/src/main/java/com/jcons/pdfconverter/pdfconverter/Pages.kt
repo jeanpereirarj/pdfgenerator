@@ -1,6 +1,6 @@
 package com.jcons.pdfconverter.pdfconverter
 
-class Pages(private val mDocument: PDFDocument, pageWidth: Int, pageHeight: Int) {
+class Pages(private val mDocument: PDFDocument) {
 
     private val mPageList: ArrayList<Page> = ArrayList()
     val indirectObject: IndirectObject = mDocument.newIndirectObject()
@@ -27,11 +27,11 @@ class Pages(private val mDocument: PDFDocument, pageWidth: Int, pageHeight: Int)
     }
 
     init {
-        val content = arrayOf<String?>(
-            "0",
-            "0",
-            pageWidth.toString(),
-            pageHeight.toString()
-        )
+//        val content = arrayOf<String?>(
+//            "0",
+//            "0",
+//            pageWidth.toString(),
+//            pageHeight.toString()
+//        )
     }
 }

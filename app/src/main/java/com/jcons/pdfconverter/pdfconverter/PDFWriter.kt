@@ -9,15 +9,6 @@ class PDFWriter {
     private var mPages: Pages? = null
     private var mCurrentPage: Page? = null
 
-    private fun newDocument(pageWidth: Int, pageHeight: Int) {
-        mCatalog = mDocument!!.newIndirectObject()
-        mDocument!!.includeIndirectObject(mCatalog)
-        mPages = Pages(mDocument!!, pageWidth, pageHeight)
-        mDocument!!.includeIndirectObject(mPages?.indirectObject)
-        renderCatalog()
-        newPage()
-    }
-
     private fun renderCatalog() {
         mCatalog!!.setDictionaryContent(
             """  /Type /Catalog
@@ -60,9 +51,11 @@ class PDFWriter {
     }
 
     init {
-        newDocument(
-            PaperSize.A4_WIDTH,
-            PaperSize.A4_HEIGHT
-        )
+        mCatalog = mDocument!!.newIndirectObject()
+        mDocument!!.includeIndirectObject(mCatalog)
+        mPages = Pages(mDocument!!)
+        mDocument!!.includeIndirectObject(mPages?.indirectObject)
+        renderCatalog()
+        newPage()
     }
 }

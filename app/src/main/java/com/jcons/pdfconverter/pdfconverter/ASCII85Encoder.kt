@@ -37,40 +37,6 @@ class ASCII85Encoder : FilterOutputStream {
     }
 
     /**
-     * Create an encoder wrapping a sink of binary data.
-     *
-     *
-     * The additional arguments allow to specify some text formatting
-     *
-     *
-     *
-     * Note that specifying a negative number for `lineLength` is really equivalent to calling the one
-     * argument [constructor][.ASCII85Encoder].
-     *
-     *
-     *
-     * If non-null start/end of line are used, they must contain only whitespace characters as other characters would
-     * otherwise interfere with the decoding process on the other side of the channel. For safety, it is recommended to
-     * stick to space (' ', 0x32) and horizontal tabulation ('\t', 0x9) characters for the start of line marker, and to
-     * line feed ('\n', 0xa) and carriage return ('\r', 0xd) characters according to the platform convention for the end
-     * of line marker.
-     *
-     *
-     * @param out        sink of binary data to filter
-     * @param lineLength maximal length of a ligne (counting `sol` but not counting `eol`), if
-     * negative lines will not be split
-     * @param sol        start of line marker to use (mainly for indentation purposes), may be null
-     * @param eol        end of line marker to use, may be null only if `lineLength` is negative
-     */
-    constructor(out: OutputStream?, lineLength: Int, sol: ByteArray?, eol: ByteArray) : super(out) {
-        this.lineLength = lineLength
-        this.sol = sol
-        this.eol = eol
-        c1 = -1
-        phase = 4
-    }
-
-    /**
      * Closes this output stream and releases any system resources associated with the stream.
      *
      * @throws IOException if the underlying stream throws one
