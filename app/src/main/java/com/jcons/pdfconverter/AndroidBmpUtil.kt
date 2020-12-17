@@ -56,12 +56,14 @@ class AndroidBmpUtil {
         bitmap: Bitmap
     ) {
         try {
+
             convertImage(bitmap)
             writeBitmapFileHeader()
             writeBitmapInfoHeader()
             writeBitmap()
-            // write to output stream
+
             outputStream!!.write(buffer!!.array())
+
         } catch (e: Exception) {
             Log.e("Exception", e.message)
         }

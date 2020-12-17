@@ -3,19 +3,20 @@ package com.jcons.pdfconverter
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.jcons.pdfconverter.pdfconverter.PDFWriter
-import com.jcons.pdfconverter.pdfconverter.PaperSize
+import androidx.lifecycle.lifecycleScope
+import id.zelory.compressor.Compressor
+import id.zelory.compressor.constraint.*
+import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileNotFoundException
 import java.io.FileOutputStream
-import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,60 +35,77 @@ class MainActivity : AppCompatActivity() {
         gerarPDF()
     }
 
-    fun gerarPDF(){
+    fun gerarPDF() {
 
         val downloads =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        var file = File(downloads, "caminhao.png")
+        var destination = File(downloads, "teste2.jpg")
 
-        val photo = (ContextCompat.getDrawable(this, R.drawable.dino) as BitmapDrawable?)!!.bitmap
 
-        var newFile = File(downloads, "teste.bmp")
-        newFile.createNewFile()
-        val bmpfile = FileOutputStream(newFile)
+        lifecycleScope.launch {
 
-        AndroidBmpUtil().saveBitmap(photo, bmpfile)
-        val mPDFWriter = PDFWriter()
-        mPDFWriter.addImage(0, 0, photo)
-        mPDFWriter.newPage()
-        mPDFWriter.addImage(0, 0, photo)
-
-        val pdfContent = mPDFWriter.asString()
-
-        newFile = File(downloads, "teste.pdf")
-
-        try {
-            newFile.createNewFile()
-            try {
-                val pdfFile = FileOutputStream(newFile)
-                pdfFile.write(pdfContent.toByteArray(charset("ISO-8859-1")))
-                pdfFile.close()
-
-                Log.w("PDF", "Successo")
-
-            } catch (e: FileNotFoundException) {
-                Log.w("PDF", e)
+            Compressor.compress(this@MainActivity, file) {
+                destination(file)
+                format(Bitmap.CompressFormat.PNG)
+                default()
             }
-        } catch (e: IOException) {
-            Log.w("PDF", e)
-        }
-    }
-
-    fun resizedBitmap(bm: Bitmap): Bitmap {
-        val maxSize = 100
-        val outWidth: Int
-        val outHeight: Int
-        val inWidth = bm.width
-        val inHeight = bm.height
-
-        if (inWidth > inHeight) {
-            outWidth = maxSize
-            outHeight = inHeight * maxSize / inWidth
-        } else {
-            outHeight = maxSize
-            outWidth = inWidth * maxSize / inHeight
         }
 
-        return Bitmap.createScaledBitmap(bm, outWidth, outHeight, false)
+
+//
+//        newFile.createNewFile()
+//        var bmpfile = FileOutputStream(newFile)
+//        AndroidBmpUtil().saveBitmap(photo, bmpfile)
+//
+//        newFile = File(downloads, "teste.jpg")
+//        if (newFile.exists()) newFile.delete()
+//
+//        try {
+//            val out = FileOutputStream(newFile)
+//            photo.compress(Bitmap.CompressFormat.JPEG, 100, out)
+//            out.flush()
+//            out.close()
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//
+//
+//        var bmp = scaleDown(photo, 1280f, true)
+//        newFile = File(downloads, "teste_compress.bmp")
+//        newFile.createNewFile()
+//        bmpfile = FileOutputStream(newFile)
+//        AndroidBmpUtil().saveBitmap(bmp, bmpfile)
+
+
+
+//        val mPDFWriter = PDFWriter()
+//        mPDFWriter.addImage(0, 0, photo)
+//        mPDFWriter.newPage()
+//        mPDFWriter.addImage(0, 0, photo)
+//
+//        val pdfContent = mPDFWriter.asString()
+//
+//        newFile = File(downloads, "teste.pdf")
+//
+//
+//        try {
+//            newFile.createNewFile()
+//            try {
+//                val pdfFile = FileOutputStream(newFile)
+//                pdfFile.write(pdfContent.toByteArray(charset("ISO-8859-1")))
+//                pdfFile.close()
+//
+//                Log.w("PDF", "Successo")
+//
+//            } catch (e: FileNotFoundException) {
+//                Log.w("PDF", e)
+//            }
+//        } catch (e: IOException) {
+//            Log.w("PDF", e)
+//        }
+
+
     }
 
 }

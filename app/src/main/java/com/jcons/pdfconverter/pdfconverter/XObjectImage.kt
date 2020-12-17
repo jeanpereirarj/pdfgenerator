@@ -90,7 +90,7 @@ class XObjectImage(private val mDocument: PDFDocument, bitmap: Bitmap) {
                     i = 0
                 }
             }
-            return sob.toString(ENCODING)
+            return sob.toString(Charsets.ISO_8859_1.name())
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -115,7 +115,6 @@ class XObjectImage(private val mDocument: PDFDocument, bitmap: Bitmap) {
         const val BITSPER_COMPONENT = BITSPERCOMPONENT_8
         const val COLOR_SPACE = DEVICE_RGB
         const val COMPRESSION_LEVEL = Deflater.NO_COMPRESSION
-        const val ENCODING = "ISO-8859-1"
         var mImageCount = 0
     }
 
