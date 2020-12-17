@@ -71,19 +71,6 @@ class IndirectObject : Base {
         return render()
     }
 
-    @Throws(IOException::class)
-    fun writeTo(stream: OutputStream): Int {
-        // j-a-s-d: this can be performed in inherited classes DictionaryObject and StreamObject
-        if (mDictionaryContent!!.hasContent()) {
-            mContent?.content = mDictionaryContent!!.toPDFString()
-            if (mStreamContent!!.hasContent()) mContent!!.addContent(mStreamContent!!.toPDFString())
-        }
-        var offset = mID!!.writeTo(stream)
-        stream.write(' '.toInt())
-        offset++
-        return offset + mContent!!.writeTo(stream)
-    }
-
     init {
         clear()
     }

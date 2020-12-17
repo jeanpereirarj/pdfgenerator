@@ -17,13 +17,6 @@ class IndirectIdentifier : Base {
         return "$number $generation"
     }
 
-    @Throws(IOException::class)
-    fun writeTo(stream: OutputStream): Int {
-        val bytes = toPDFString().toByteArray(Charsets.US_ASCII)
-        stream.write(bytes)
-        return bytes.size
-    }
-
     init {
         clear()
     }

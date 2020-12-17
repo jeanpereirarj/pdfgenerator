@@ -27,7 +27,7 @@ class Trailer : Base {
         mTrailerDictionary!!.addNewLine()
     }
 
-    private fun render(): String {
+    override fun toPDFString(): String {
         renderDictionary()
         val sb = StringBuilder()
         sb.append("trailer")
@@ -40,10 +40,6 @@ class Trailer : Base {
         sb.append("%%EOF")
         sb.append("\n")
         return sb.toString()
-    }
-
-    override fun toPDFString(): String {
-        return render()
     }
 
     override fun clear() {

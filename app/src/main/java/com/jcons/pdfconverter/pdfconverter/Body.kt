@@ -1,9 +1,6 @@
 package com.jcons.pdfconverter.pdfconverter
 
-import java.io.IOException
-import java.io.OutputStream
 import java.util.*
-
 
 class Body : List() {
     private var mByteOffsetStart = 0

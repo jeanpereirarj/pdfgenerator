@@ -39,13 +39,6 @@ open class EnclosedContent(private val mBegin: String, private val mEnd: String)
         return mBegin + mContent.toString() + mEnd
     }
 
-    @Throws(IOException::class)
-    fun writeTo(stream: OutputStream): Int {
-        val bytes = toPDFString().toByteArray(Charsets.US_ASCII)
-        stream.write(bytes)
-        return bytes.size
-    }
-
     init {
         clear()
     }
