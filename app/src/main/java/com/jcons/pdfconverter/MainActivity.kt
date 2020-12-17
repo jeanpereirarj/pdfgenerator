@@ -41,26 +41,13 @@ class MainActivity : AppCompatActivity() {
 
         val downloads =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        var file = File(downloads, "dino.jpg")
+
         var newFile = File(downloads, "teste.png")
         if (newFile.exists()) newFile.delete()
 
-        try {
-            val out = FileOutputStream(newFile)
-            photo.compress(Bitmap.CompressFormat.PNG, 100, out)
-            out.flush()
-            out.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        photo = Compress.compressBitmap(photo, 85)
 
-
-        photo = Compress.compressBitmap(photo)
-
-
-        var newFile2 = File(downloads, "teste2.png")
         if (newFile.exists()) newFile.delete()
-
         try {
             val out = FileOutputStream(newFile)
             photo.compress(Bitmap.CompressFormat.PNG, 100, out)
@@ -70,33 +57,12 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-//
-//
-//        newFile.createNewFile()
-//        var bmpfile = FileOutputStream(newFile)
-//        AndroidBmpUtil().saveBitmap(photo, bmpfile)
-//
-//        newFile = File(downloads, "teste.jpg")
-//        if (newFile.exists()) newFile.delete()
-//
-//        try {
-//            val out = FileOutputStream(newFile)
-//            photo.compress(Bitmap.CompressFormat.JPEG, 100, out)
-//            out.flush()
-//            out.close()
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//
-//
-//        var bmp = scaleDown(photo, 1280f, true)
-//        newFile = File(downloads, "teste_compress.bmp")
-//        newFile.createNewFile()
-//        bmpfile = FileOutputStream(newFile)
-//        AndroidBmpUtil().saveBitmap(bmp, bmpfile)
+        //Cria o Bitmap
+        newFile = File(downloads, "teste.bmp")
+        AndroidBmpUtil().saveBitmap(newFile.absolutePath, photo)
 
 
-
+        //Cria o PDF
         val mPDFWriter = PDFWriter()
         mPDFWriter.addImage(0, 0, photo)
         mPDFWriter.newPage()
