@@ -117,13 +117,13 @@ object Compress {
 
             when {
                 imgRatio < maxRatio -> {
-                    imgRatio = (DEFAULT_HEIGTH / actualHeight).toFloat()
-                    actualWidth = (imgRatio * actualWidth) as Int
+                    imgRatio = (DEFAULT_HEIGTH.toFloat() / actualHeight)
+                    actualWidth = (imgRatio * actualWidth).toInt()
                     actualHeight = DEFAULT_HEIGTH
                 }
                 imgRatio > maxRatio -> {
-                    imgRatio = (DEFAULT_WIDTH / actualWidth).toFloat()
-                    actualHeight = (imgRatio * actualHeight) as Int
+                    imgRatio = (DEFAULT_WIDTH.toFloat() / actualWidth)
+                    actualHeight = (imgRatio * actualHeight).toInt()
                     actualWidth = DEFAULT_WIDTH
                 }
                 else -> {
@@ -134,7 +134,7 @@ object Compress {
         }
 
         try {
-            scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888)
+            scaledBitmap = Bitmap.createScaledBitmap(bmp, actualWidth, actualHeight, true)
         } catch (exception: OutOfMemoryError) {
             exception.printStackTrace()
         }
@@ -186,6 +186,17 @@ private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int,
     return inSampleSize
 }
 
+fun overWrite(imageFile: File, bitmap: Bitmap, format: Bitmap.CompressFormat = imageFile.compressFormat(), quality: Int = 100): File {
+    val result = if (format == imageFile.compressFormat()) {
+        imageFile
+    } else {
+        File("${imageFile.absolutePath.substringBeforeLast(".")}.${format.extension()}")
+    }
+    imageFile.delete()
+    saveBitmap(bitmap, result, format, quality)
+    return result
+}
+
 private fun determineImageRotation(imageFile: File, bitmap: Bitmap): Bitmap {
     val exif = ExifInterface(imageFile.absolutePath)
     val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 0)
@@ -196,6 +207,20 @@ private fun determineImageRotation(imageFile: File, bitmap: Bitmap): Bitmap {
         8 -> matrix.postRotate(270f)
     }
     return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+}
+
+fun saveBitmap(bitmap: Bitmap, destination: File, format: Bitmap.CompressFormat = destination.compressFormat(), quality: Int = 100) {
+    destination.parentFile?.mkdirs()
+    var fileOutputStream: FileOutputStream? = null
+    try {
+        fileOutputStream = FileOutputStream(destination.absolutePath)
+        bitmap.compress(format, quality, fileOutputStream)
+    } finally {
+        fileOutputStream?.run {
+            flush()
+            close()
+        }
+    }
 }
 
 private const val DEFAULT_WIDTH: Int = 612

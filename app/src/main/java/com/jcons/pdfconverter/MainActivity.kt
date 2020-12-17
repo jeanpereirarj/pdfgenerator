@@ -11,12 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.jcons.pdfconverter.pdfconverter.PDFWriter
 import id.zelory.compressor.Compressor
-import id.zelory.compressor.constraint.*
+import id.zelory.compressor.constraint.default
+import id.zelory.compressor.constraint.size
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
+import java.io.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,24 +35,42 @@ class MainActivity : AppCompatActivity() {
         gerarPDF()
     }
 
-    fun gerarPDF() {
+    fun gerarPDF(){
+
+        var photo = (ContextCompat.getDrawable(this, R.drawable.dino) as BitmapDrawable?)!!.bitmap
 
         val downloads =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        var file = File(downloads, "caminhao.png")
-        var destination = File(downloads, "teste2.jpg")
+        var file = File(downloads, "dino.jpg")
+        var newFile = File(downloads, "teste.png")
+        if (newFile.exists()) newFile.delete()
 
-
-        lifecycleScope.launch {
-
-            Compressor.compress(this@MainActivity, file) {
-                destination(file)
-                format(Bitmap.CompressFormat.PNG)
-                default()
-            }
+        try {
+            val out = FileOutputStream(newFile)
+            photo.compress(Bitmap.CompressFormat.PNG, 100, out)
+            out.flush()
+            out.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
 
 
+        photo = Compress.compressBitmap(photo)
+
+
+        var newFile2 = File(downloads, "teste2.png")
+        if (newFile.exists()) newFile.delete()
+
+        try {
+            val out = FileOutputStream(newFile)
+            photo.compress(Bitmap.CompressFormat.PNG, 100, out)
+            out.flush()
+            out.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+//
 //
 //        newFile.createNewFile()
 //        var bmpfile = FileOutputStream(newFile)
@@ -79,31 +97,30 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        val mPDFWriter = PDFWriter()
-//        mPDFWriter.addImage(0, 0, photo)
-//        mPDFWriter.newPage()
-//        mPDFWriter.addImage(0, 0, photo)
-//
-//        val pdfContent = mPDFWriter.asString()
-//
-//        newFile = File(downloads, "teste.pdf")
-//
-//
-//        try {
-//            newFile.createNewFile()
-//            try {
-//                val pdfFile = FileOutputStream(newFile)
-//                pdfFile.write(pdfContent.toByteArray(charset("ISO-8859-1")))
-//                pdfFile.close()
-//
-//                Log.w("PDF", "Successo")
-//
-//            } catch (e: FileNotFoundException) {
-//                Log.w("PDF", e)
-//            }
-//        } catch (e: IOException) {
-//            Log.w("PDF", e)
-//        }
+        val mPDFWriter = PDFWriter()
+        mPDFWriter.addImage(0, 0, photo)
+        mPDFWriter.newPage()
+        mPDFWriter.addImage(0, 0, photo)
+
+        val pdfContent = mPDFWriter.asString()
+
+        newFile = File(downloads, "teste.pdf")
+
+
+        try {
+            newFile.createNewFile()
+            try {
+                val pdfFile = FileOutputStream(newFile)
+                pdfFile.write(pdfContent.toByteArray(charset("ISO-8859-1")))
+                pdfFile.close()
+
+
+            } catch (e: FileNotFoundException) {
+
+            }
+        } catch (e: IOException) {
+
+        }
 
 
     }
